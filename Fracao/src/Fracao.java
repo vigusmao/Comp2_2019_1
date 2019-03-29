@@ -11,11 +11,8 @@ public class Fracao {
 
     // metodo especial: o construtor da classe
     public Fracao() {
-       this.numerador = 0;
-       this.denominador = 1;
-       this.positiva = true;
-       atualizarValorNumerico();
-       atualizarFracaoIrredutivel();
+        // chama o outro construtor passando os valores default
+        this(0, 1, true);
     }
 
     // outro construtor (overload)
@@ -24,7 +21,6 @@ public class Fracao {
         this.denominador = denominador;
         this.positiva = sinal;
         atualizarValorNumerico();
-        atualizarFracaoIrredutivel();
     }
 
     /* estamos redeclarando um método que já existe
@@ -38,7 +34,7 @@ public class Fracao {
         if (this.fracaoIrredutivel == this) {
             s += " (" + this.valorNumerico + ")";
         } else {
-            s += " = " + this.fracaoIrredutivel.toString();
+            //s += " = " + getFracaoIrredutivel().toString();
         }
          return s;
     }
@@ -55,7 +51,7 @@ public class Fracao {
         }
         this.numerador = numerador;
         atualizarValorNumerico();
-        atualizarFracaoIrredutivel();
+        this.fracaoIrredutivel = null;  // invalida
     }
 
     public int getDenominador() {
@@ -70,7 +66,7 @@ public class Fracao {
         }
         this.denominador = denominador;
         atualizarValorNumerico();
-        atualizarFracaoIrredutivel();
+        this.fracaoIrredutivel = null;  // invalida
     }
 
     public boolean isPositiva() {
@@ -80,7 +76,7 @@ public class Fracao {
     public void setPositiva(boolean positiva) {
         this.positiva = positiva;
         atualizarValorNumerico();
-        atualizarFracaoIrredutivel();
+        this.fracaoIrredutivel = null;  // invalida
     }
 
     public float getValorNumerico() {
@@ -114,6 +110,10 @@ public class Fracao {
     }
 
     public Fracao getFracaoIrredutivel() {
+        if (this.fracaoIrredutivel == null) {
+            atualizarFracaoIrredutivel();  // lazy instantiation
+        }
+
         return this.fracaoIrredutivel;
     }
 }

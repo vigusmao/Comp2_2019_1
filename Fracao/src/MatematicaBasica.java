@@ -28,5 +28,13 @@ public class MatematicaBasica {
         int mdc = Aritmetica.calcularMDC(30, 25);
         System.out.println("MDC(30,25) = " + mdc);
 
+        System.out.println(x.getFracaoIrredutivel());
+
+        x.setNumerador(20);  // mudando x para 20/12
+
+        System.out.println(x.getFracaoIrredutivel());
+
+        System.out.println("raiz(12) = " + Aritmetica.calcularRaiz(12));
+
     }
 }

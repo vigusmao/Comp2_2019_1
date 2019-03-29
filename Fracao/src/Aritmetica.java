@@ -11,4 +11,13 @@ public class Aritmetica {
         }
         return calcularMDC(y, resto);
     }
+
+    public static double calcularRaiz(double x) {
+        return calcularRaiz(x, 2);  /* estamos usando overload (sobrecarga)
+                                       para passar valores default */
+    }
+
+    public static double calcularRaiz(double x, int indice) {
+        return Math.pow(x, 1.0/indice);
+    }
 }
