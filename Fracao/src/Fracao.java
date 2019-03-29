@@ -15,6 +15,7 @@ public class Fracao {
        this.denominador = 1;
        this.positiva = true;
        atualizarValorNumerico();
+       atualizarFracaoIrredutivel();
     }
 
     // outro construtor (overload)
@@ -23,16 +24,23 @@ public class Fracao {
         this.denominador = denominador;
         this.positiva = sinal;
         atualizarValorNumerico();
+        atualizarFracaoIrredutivel();
     }
 
     /* estamos redeclarando um método que já existe
        numa classe ancestral */
     @Override
     public String toString() {
-        return (this.positiva ? "" : "-") +
+        String s = (this.positiva ? "" : "-") +
                 this.numerador +
-                (this.denominador == 1 ? "" : "/" + this.denominador) +
-                " (" + this.valorNumerico + ")";
+                (this.denominador == 1 ? "" : "/" + this.denominador);
+
+        if (this.fracaoIrredutivel == this) {
+            s += " (" + this.valorNumerico + ")";
+        } else {
+            s += " = " + this.fracaoIrredutivel.toString();
+        }
+         return s;
     }
 
     public int getNumerador() {
@@ -47,6 +55,7 @@ public class Fracao {
         }
         this.numerador = numerador;
         atualizarValorNumerico();
+        atualizarFracaoIrredutivel();
     }
 
     public int getDenominador() {
@@ -61,6 +70,7 @@ public class Fracao {
         }
         this.denominador = denominador;
         atualizarValorNumerico();
+        atualizarFracaoIrredutivel();
     }
 
     public boolean isPositiva() {
@@ -70,6 +80,7 @@ public class Fracao {
     public void setPositiva(boolean positiva) {
         this.positiva = positiva;
         atualizarValorNumerico();
+        atualizarFracaoIrredutivel();
     }
 
     public float getValorNumerico() {
@@ -84,6 +95,25 @@ public class Fracao {
     }
 
     private void atualizarFracaoIrredutivel() {
+        if (this.numerador == 0) {
+            this.fracaoIrredutivel = this;
+            return;
+        }
 
+        int mdc = Aritmetica.calcularMDC(
+                this.numerador, this.denominador);
+
+        if (mdc == 1) {
+            this.fracaoIrredutivel = this;
+            return;
+        }
+
+        int n = this.numerador / mdc;
+        int d = this.denominador / mdc;
+        this.fracaoIrredutivel = new Fracao(n, d, this.positiva);
+    }
+
+    public Fracao getFracaoIrredutivel() {
+        return this.fracaoIrredutivel;
     }
 }

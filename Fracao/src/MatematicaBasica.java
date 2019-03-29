@@ -1,7 +1,5 @@
 public class MatematicaBasica {
 
-
-
     public static void main(String[] args) {
 
         Fracao x;  // x é null nesse momento, como valor default
@@ -13,7 +11,7 @@ public class MatematicaBasica {
         System.out.println("y = " + y);
 
         x.setNumerador(18);
-        x.setDenominador(3);
+        x.setDenominador(12);
         System.out.println("x = " + x.toString());
 
         try {
