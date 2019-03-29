@@ -2,6 +2,8 @@ import java.security.InvalidParameterException;
 
 public class Fracao {
 
+    public static final char separador = '/';
+
     private int numerador;   // sempre não-negativo
     private int denominador;  // sempre positivo
     private boolean positiva;  // indica o sinal da fração
@@ -29,7 +31,8 @@ public class Fracao {
     public String toString() {
         String s = (this.positiva ? "" : "-") +
                 this.numerador +
-                (this.denominador == 1 ? "" : "/" + this.denominador);
+                (this.denominador == 1 ? "" :
+                        separador + this.denominador);
 
         if (this.fracaoIrredutivel == this) {
             s += " (" + this.valorNumerico + ")";

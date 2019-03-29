@@ -36,5 +36,6 @@ public class MatematicaBasica {
 
         System.out.println("raiz(12) = " + Aritmetica.calcularRaiz(12));
 
+        System.out.println(Fracao.separador);
     }
 }
