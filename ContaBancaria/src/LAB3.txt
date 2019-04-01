@@ -1,0 +1,46 @@
+- Crie uma classe ContaBancaria
+- Uma conta bacária deve ter um "número" (long), isto é,
+  um identificador, que deve fornecido no momento em que a conta
+  é criada; esse identificador não deverá jamais ser modificado,
+  em hipótese alguma, ou seja, deve ser imutável (final)
+- A conta deve ter, também, um "saldo" (float) e um "dono" (String);
+  esse atributo "dono" será simplesmente o nome do dono, para facilitar
+- TODAS AS CONTAS criadas terão um valor fixo, pré-determinado
+  (como atributo estático da classe), que indica o limite máximo negativo
+  que a conta poderá ter de saldo (limite do "cheque especial")
+- A conta deve ter também uma "senha" (int)
+
+- A conta deve ter os seguintes métodos públicos:
+  --> getSaldo()
+  --> setSenha()
+  --> depositar(float valor)
+      Note que o valor deve ser sempre positivo; caso contrário,
+      lance uma IllegalArgumentException
+  --> sacar(float valor, int senha)
+      Note que o valor deve ser sempre positivo; caso contrário,
+      lance uma IllegalArgumentException.
+      Note também que o valor a ser sacado não pode deixar a
+      conta mais negativa do que o limite do cheque especial;
+      caso isso fosse acontecer, lance uma SaldoInsuficienteException
+      Finalmente, a senha informada precisa estar correta; caso contrário,
+      lance uma SenhaInvalidaException
+  --> transferir(float valor, ContaBancaria contaDestino, int senha)
+      Nesse método você vai basicamente sacar da sua conta (this)
+      e depositar na conta-destino. Portanto, usará os métodos que já
+      existem.
+
+- Crie uma classe Principal, com um método main, para fazer o seguinte:
+  --> Crie duas contas.
+  --> Deposite algo em uma das contas.
+  --> Tente sacar algo das contas. Mande imprimir os saldos.
+  --> Tente transferir algo de uma conta para outra.
+      Mande imprimir os saldos.
+  --> Faça um laço infinito --- while(true) --- em que você pede para
+      o usuário digitar um valor e uma senha, sacando o valor digitado
+      da primeira conta criada, e imprimindo o saldo a seguir.
+      Se a senha digitada estiver errada, imprima
+      "Senha inválida, tente novamente". Caso a senha seja digitada
+      erradamente por 3 vezes, imprima "Conta bloqueada" e saia do loop.
+
+
+
