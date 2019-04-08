@@ -1,8 +1,8 @@
-- Crie uma classe Documento, com os seguintes atributos final:
+- Crie uma classe Documento, com os seguintes atributos "final":
   --> String texto
   --> int numeroDePaginas
   (crie um construtor que receba como parâmetros os valores
-   desses dois atributos, e getters para eles)
+   desses dois atributos, e crie getters para eles)
 
 - Crie uma classe Impressora e duas subclasses:
   ImpressoraLaser e ImpressoraJatoDeTinta
@@ -10,12 +10,12 @@
 - A classe Impressora terá como métodos públicos:
   --> imprimirDocumento(Documento documento)
   --> getTotalPaginasImpressas()
-  --> getAutonomiaRestante()  // indica o percentual restante de "tinta"
-  --> getAutonomiaNominal()  // indica quantas páginas podem ser impressas
-                             // antes de se efetuar uma reposição de "tinta"
+  --> getAutonomiaRestante() // indica o percentual restante de "tinta"
+  --> getAutonomiaNominal() // indica quantas páginas podem ser impressas
+                            // antes de se efetuar uma reposição de "tinta"
 
 - A classe Impressora terá um método não-público (protegido)
-  chamado efetuarImpressao(String string)
+   chamado efetuarImpressao(String string)
   A classe Impressora não SABE efetuar de fato uma impressão, ou seja,
    uma impressora "genérica" não tem como implementar o método
    efetuarImpressao porque ela não sabe com que tipo de aparato físico
@@ -59,4 +59,7 @@
 
 - Crie uma classe Principal, onde no main você vai instanciar uma Grafica
   e um Documento, pedindo para a Grafica imprimir seu documento, e
-  indicar o preco cobrado.
+  indicar o preço cobrado. Note que, para instanciar a Grafica,
+  você precisará de uma impressora. Crie, portanto, uma impressora
+  (laser ou jato de tinta, a seu critério!) e a passe para o construtor
+  da sua gráfica.
