@@ -11,7 +11,15 @@ public class Impressora {
         this.totalPaginasImpressas = 0;
     }
 
-    public void imprimirDocumento(Documento documento) {
+    /**
+     * Imprime o documento informado, se houver tinta suficiente.
+     *
+     * @param documento o documento a ser impresso
+     * @throws AutonomiaExcedidaException se não houver tinta/tonner/etc.
+     */
+    public void imprimirDocumento(Documento documento)
+            throws AutonomiaExcedidaException {
+
         if (documento.getNumeroDePaginas() + this.totalPaginasImpressas >
                 this.autonomiaNominal) {
             throw new AutonomiaExcedidaException();
