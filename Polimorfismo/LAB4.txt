@@ -11,6 +11,7 @@
   --> imprimirDocumento(Documento documento)
   --> getTotalPaginasImpressas()
   --> getAutonomiaRestantePercentual() // indica o percentual restante de "tinta"
+
   --> getAutonomiaNominal() // indica quantas páginas podem ser impressas
                             // antes de se efetuar uma reposição de "tinta"
 
@@ -37,9 +38,6 @@
 - Nas subclasses, você deverá implementar o método
   efetuarImpressao(String string). Pode ser simplesmente
   algo do tipo System.out.println("Imprimindo com jato de tinta"... etc)
-
-- Nas subclases, você deverá também implementar o método
-  getAutonomiaNominal()
 
 - Cada INSTÂNCIA de impressora jato de tinta tem uma autonomia nominal
   diferente, que deve ser informada no seu construtor. Por outro lado,
