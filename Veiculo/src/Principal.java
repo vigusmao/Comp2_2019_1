@@ -1,19 +1,30 @@
+import java.util.Random;
+
 public class Principal {
 
+    static Random random = new Random();
+
+    public static Veiculo prepararVeiculo() {
+        if (random.nextBoolean()) {
+            return new Automovel("34234", "HGJ-3287");
+        } else {
+            return new Bicicleta();
+        }
+    }
+
     public static void main(String[] args) {
-//        Veiculo meuAutomovel = new Veiculo(40, 4);
+        Veiculo calhambeque;
+        calhambeque = prepararVeiculo();
 
-        Automovel meuAutomovel = new Automovel("KFH123J90", 60, 4);
-
-        meuAutomovel.andar(20);
-        meuAutomovel.buzinar();
+        calhambeque.andar(20);
+//        calhambeque.buzinar();
 
         try {
-            Thread.sleep(3000);  // espere 3 segundos
+            Thread.sleep(1000);  // espere 1 segundo
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        meuAutomovel.parar();
+        calhambeque.parar();
     }
 }

@@ -1,6 +1,6 @@
 public class Veiculo {
 
-    private final float velocidadeMaxima;  // em m/s
+    private float velocidadeMaxima;  // em m/s
 
     private float velocidadeAtual;  // em m/s
 
@@ -31,12 +31,16 @@ public class Veiculo {
         }
 
         this.velocidadeAtual = velocidade;
-        System.out.println("Comecei a andar com velocidade " +
-                this.velocidadeAtual);
+        System.out.println("Comecei a andar (como VEICULO genérico) " +
+                "com velocidade " + this.velocidadeAtual);
+    }
+
+    public void setVelocidadeMaxima(float velocidadeMaxima) {
+        this.velocidadeMaxima = velocidadeMaxima;
     }
 
     public void parar() {
         this.velocidadeAtual = 0;
-        System.out.println("Parei!");
+        System.out.println("Reduzi minha velocidade a zero!");
     }
 }
