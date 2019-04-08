@@ -10,7 +10,7 @@
 - A classe Impressora terá como métodos públicos:
   --> imprimirDocumento(Documento documento)
   --> getTotalPaginasImpressas()
-  --> getAutonomiaRestante() // indica o percentual restante de "tinta"
+  --> getAutonomiaRestantePercentual() // indica o percentual restante de "tinta"
   --> getAutonomiaNominal() // indica quantas páginas podem ser impressas
                             // antes de se efetuar uma reposição de "tinta"
 
@@ -29,7 +29,7 @@
     System.out.println). Esse método deverá também atualizar, obviamente,
     o número de páginas impressas até o momento.
 
-- A implementação do getAutonomiaRestante deve se basear
+- A implementação do getAutonomiaRestantePercentual deve se basear
   na quantidade de páginas impressas até o momento
   e na quantidade máxima de páginas suportada por aquele tipo de
   impressora
