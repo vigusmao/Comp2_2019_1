@@ -1,0 +1,62 @@
+- Crie uma classe Documento, com os seguintes atributos final:
+  --> String texto
+  --> int numeroDePaginas
+  (crie um construtor que receba como parâmetros os valores
+   desses dois atributos, e getters para eles)
+
+- Crie uma classe Impressora e duas subclasses:
+  ImpressoraLaser e ImpressoraJatoDeTinta
+
+- A classe Impressora terá como métodos públicos:
+  --> imprimirDocumento(Documento documento)
+  --> getTotalPaginasImpressas()
+  --> getAutonomiaRestante()  // indica o percentual restante de "tinta"
+  --> getAutonomiaNominal()  // indica quantas páginas podem ser impressas
+                             // antes de se efetuar uma reposição de "tinta"
+
+- A classe Impressora terá um método não-público (protegido)
+  chamado efetuarImpressao(String string)
+  A classe Impressora não SABE efetuar de fato uma impressão, ou seja,
+   uma impressora "genérica" não tem como implementar o método
+   efetuarImpressao porque ela não sabe com que tipo de aparato físico
+   ela poderá contar. Portanto, esse método deverá (por enquanto!)
+   ficar VAZIO na classe Impressora.
+
+   O método imprimirDocumento(Documento)
+   da classe Impressora deve verificar se a autonomia restante é suficiente
+   para imprimir o documento desejado. Caso contrário, lança uma exceção
+   (ou, opcionalmente, simplesmente não faz nada, reportando um erro via
+    System.out.println). Esse método deverá também atualizar, obviamente,
+    o número de páginas impressas até o momento.
+
+- A implementação do getAutonomiaRestante deve se basear
+  na quantidade de páginas impressas até o momento
+  e na quantidade máxima de páginas suportada por aquele tipo de
+  impressora
+
+- Nas subclasses, você deverá implementar o método
+  efetuarImpressao(String string). Pode ser simplesmente
+  algo do tipo System.out.println("Imprimindo com jato de tinta"... etc)
+
+- Nas subclases, você deverá também implementar o método
+  getAutonomiaNominal()
+
+- Cada INSTÂNCIA de impressora jato de tinta tem uma autonomia nominal
+  diferente, que deve ser informada no seu construtor. Por outro lado,
+  TODAS as instâncias de impressora a laser tem a mesma autonomia nominal,
+  digamos, de 10.000 páginas.
+
+- Crie uma classe Grafica, que recebe no construtor um objeto Impressora
+  e um float precoPorPagina, em reais.
+  A Grafica tem dois metodos publicos:
+    --> float orcarImpressao(Documento doc)
+       // retorna o preco da impressao do documento
+
+    --> imprimir(Documento doc)
+       // executa a impressao do documento usando a impressora da gráfica
+       // retorna uma String que é o recibo da impressão contendo
+       // o preço a ser cobrado
+
+- Crie uma classe Principal, onde no main você vai instanciar uma Grafica
+  e um Documento, pedindo para a Grafica imprimir seu documento, e
+  indicar o preco cobrado.
