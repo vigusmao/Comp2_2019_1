@@ -14,7 +14,7 @@
     ...e os seguintes métodos:
     --> private boolean possuiLivro(Livro livro)
         indica se o livro informado pertence ao acervo da loja
-    --> incluirLivroNoAcervo(Livro livro)
+    --> public incluirLivroNoAcervo(Livro livro)
     --> public String efetuarVenda(Livro livro, int quantidade)
         i) verifica se o livro pertence ao acervo da loja
            (se não existir, lança exceção)
