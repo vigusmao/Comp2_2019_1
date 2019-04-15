@@ -1,0 +1,34 @@
+- Crie uma classe Livro, com atributos final titulo (String),
+  autor (String) e anoDePublicacao (int)
+
+- Crie uma classe LivrariaVirtual,
+    com os seguintes atributos...
+    --> Livro[] acervo
+        um array para 1000 livros
+    --> int tamanhoAcervo
+        indica a quantidade de livros no acervo da loja
+    --> precoPorLivroEmReais
+        um float indicando o preco de qualquer livro da loja
+        (sim, por enquanto todos terão o mesmo preço)
+
+    ...e os seguintes métodos:
+    --> private boolean possuiLivro(Livro livro)
+        indica se o livro informado pertence ao acervo da loja
+    --> incluirLivroNoAcervo(Livro livro)
+    --> public String efetuarVenda(Livro livro, int quantidade)
+        i) verifica se o livro pertence ao acervo da loja
+           (se não existir, lança exceção)
+        ii) chama o método receberPagamento(float valor)
+        iii) retorna uma String representando o recibo da compra
+
+- O método receberPagamento deverá ser abstract
+
+- Crie uma classe LivrariaVirtualViaBoleto, subclasse de Livraria Virtual,
+  que implementa o método receberPagamento. Esta livraria aceita apenas
+  pagamentos via boleto bancário. Sua implementação de receberPagamento()
+  deve apenas imprimir na tela "Pagamento encaminhado via boleto".
+
+- Crie uma classe Principal, onde no main() você criará
+  alguns livros e os incluirá no acervo de uma lojaVirtualViaBoleto.
+  Depois você tentará comprar alguns desses livros, para testar.
+
