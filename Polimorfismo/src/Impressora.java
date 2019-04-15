@@ -1,4 +1,4 @@
-public class Impressora {
+public abstract class Impressora {
 
     // Total de páginas que podem ser impressas entre cada reposição de "tinta"
     private final int autonomiaNominal;
@@ -12,7 +12,7 @@ public class Impressora {
     }
 
     /**
-     * Imprime o documento informado, se houver tinta suficiente.
+     * Imprime o documento informado, se houver "autonomia" suficiente.
      *
      * @param documento o documento a ser impresso
      * @throws AutonomiaExcedidaException se não houver tinta/tonner/etc.
@@ -20,11 +20,19 @@ public class Impressora {
     public void imprimirDocumento(Documento documento)
             throws AutonomiaExcedidaException {
 
-        if (documento.getNumeroDePaginas() + this.totalPaginasImpressas >
-                this.autonomiaNominal) {
+        // verifica se o documento pode ser impresso completamente
+        if (documento.getNumeroDePaginas() > getAutonomiaRestante()) {
             throw new AutonomiaExcedidaException();
         }
+
+        // dispara o método que fará a impressão propriamente dita
+        efetuarImpressao(documento);
+
+        // atualiza o contador de páginas impressas
+        this.totalPaginasImpressas += documento.getNumeroDePaginas();
     }
+
+    public abstract void efetuarImpressao(Documento doc);
 
     public int getTotalPaginasImpressas() {
         return this.totalPaginasImpressas;

@@ -10,10 +10,11 @@
 - A classe Impressora terá como métodos públicos:
   --> imprimirDocumento(Documento documento)
   --> getTotalPaginasImpressas()
-  --> getAutonomiaRestantePercentual() // indica o percentual restante de "tinta"
+  --> getAutonomiaRestante() // indica quantas páginas ainda podem ser impressas
 
-  --> getAutonomiaNominal() // indica quantas páginas podem ser impressas
-                            // antes de se efetuar uma reposição de "tinta"
+  --> getAutonomiaNominal() // indica a capacidade da impressora
+                            // (quantas páginas podem ser impressas
+                            // antes de se efetuar uma reposição de "tinta")
 
 - A classe Impressora terá um método não-público (protegido)
    chamado efetuarImpressao(String string)
