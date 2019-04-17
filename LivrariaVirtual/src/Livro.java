@@ -35,7 +35,6 @@ public class Livro {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(titulo, autor);
     }
 }
