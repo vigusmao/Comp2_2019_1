@@ -1,4 +1,5 @@
 import java.security.InvalidParameterException;
+import java.util.Objects;
 
 public class Fracao {
 
@@ -118,5 +119,17 @@ public class Fracao {
         }
 
         return this.fracaoIrredutivel;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Fracao outra = (Fracao) o;
+        return outra.getFracaoIrredutivel().getNumerador() ==
+                        this.getFracaoIrredutivel().getNumerador() &&
+                outra.getFracaoIrredutivel().getDenominador() ==
+                        this.getFracaoIrredutivel().getDenominador() &&
+                outra.isPositiva() == this.isPositiva();
     }
 }
