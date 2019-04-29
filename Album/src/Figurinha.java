@@ -1,6 +1,12 @@
 public class Figurinha {
 
+    private final int posicao;
+
     public Figurinha(int posicao) {
-        // ToDo IMPLEMENT ME!!!
+        this.posicao = posicao;
+    }
+
+    public int getPosicao() {
+        return posicao;
     }
 }
