@@ -3,7 +3,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class AlbumTest {
+public class AlbumTestParaFigurinha {
 
     Album album;
 
@@ -15,7 +15,7 @@ public class AlbumTest {
         this.album = new Album("Album Teste", TAMANHO_DO_ALBUM);
     }
 
-    private void popularAlbum(int[] posicoesDesejadas) throws FigurinhaInvalidaException {
+    private void popularAlbum(int[] posicoesDesejadas) throws ItemInvalidoException {
         int tamanhoPacote = posicoesDesejadas.length;
         Figurinha[] pacote = new Figurinha[tamanhoPacote];
         for (int i = 0; i < tamanhoPacote; i++) {
@@ -26,12 +26,12 @@ public class AlbumTest {
     }
 
     private void comprarPacotinhoUnitario(int posicaoFigurinha)
-            throws FigurinhaInvalidaException {
+            throws ItemInvalidoException {
         popularAlbum(new int[] {posicaoFigurinha});
     }
 
     @Test
-    public void possuiFigurinhaTestParaFigurinhasExistentes() throws FigurinhaInvalidaException {
+    public void possuiFigurinhaTestParaFigurinhasExistentes() throws ItemInvalidoException {
         popularAlbum(new int[] {1, 2, 3});
 
         for (int i = 1; i <= FIGURINHAS_POR_PACOTE; i++) {
@@ -41,7 +41,7 @@ public class AlbumTest {
     }
 
     @Test
-    public void possuiFigurinhaTestParaFigurinhasAusentes() throws FigurinhaInvalidaException {
+    public void possuiFigurinhaTestParaFigurinhasAusentes() throws ItemInvalidoException {
         popularAlbum(new int[] {1, 2, 3});
 
         assertFalse("Não devemos encontrar no álbum figurinhas nunca inseridas",
@@ -54,7 +54,7 @@ public class AlbumTest {
     }
 
     @Test
-    public void possuiRepetidaTestParaFigurinhaRepetida() throws FigurinhaInvalidaException {
+    public void possuiRepetidaTestParaFigurinhaRepetida() throws ItemInvalidoException {
         popularAlbum(new int[] {1, 2, 3});
 
         assertFalse(this.album.possuiRepetida(1));  // sanity check
@@ -64,7 +64,7 @@ public class AlbumTest {
     }
 
     @Test
-    public void possuiRepetidaTestParaFigurinhaNaoRepetida() throws FigurinhaInvalidaException {
+    public void possuiRepetidaTestParaFigurinhaNaoRepetida() throws ItemInvalidoException {
         popularAlbum(new int[] {1, 2, 3});
         comprarPacotinhoUnitario(2);
 
@@ -82,9 +82,9 @@ public class AlbumTest {
         try {
             popularAlbum(new int[] {1, 2, 3, -500, 4});
             fail("Figurinhas inválidas devem acarretar a produção " +
-                    "de uma FigurinhaInvalidaException");
+                    "de uma ItemInvalidoException");
 
-        } catch (FigurinhaInvalidaException e) {
+        } catch (ItemInvalidoException e) {
             // ok
         }
 
@@ -102,45 +102,45 @@ public class AlbumTest {
     }
 
     @Test
-    public void getFigurinhaTest() throws FigurinhaInvalidaException {
+    public void getFigurinhaTest() throws ItemInvalidoException {
         popularAlbum(new int[] {1, 2, 3});
 
-        Figurinha f = this.album.getFigurinha(1);
+        Figurinha f = this.album.getItem(1);
         assertNotNull(f);
         assertEquals(1, f.getPosicao());
 
-        assertNull(this.album.getFigurinha(5));
-        assertNull(this.album.getFigurinha(-500));
-        assertNull(this.album.getFigurinha(TAMANHO_DO_ALBUM + 1));
+        assertNull(this.album.getItem(5));
+        assertNull(this.album.getItem(-500));
+        assertNull(this.album.getItem(TAMANHO_DO_ALBUM + 1));
     }
 
     @Test
-    public void getContFigurinhasTest() throws FigurinhaInvalidaException {
+    public void getContFigurinhasTest() throws ItemInvalidoException {
         popularAlbum(new int[] {1, 2, 3});
         assertEquals(FIGURINHAS_POR_PACOTE,
-                this.album.getContFigurinhas());
+                this.album.getContItems());
 
         // vou agora abrir outro pacotinho com as mesmas figurinhas
         // e verificar que o álbum terá ainda 3 figurinhas
 
         popularAlbum(new int[] {1, 2, 3});
         assertEquals(FIGURINHAS_POR_PACOTE,
-                this.album.getContFigurinhas());
+                this.album.getContItems());
     }
 
     @Test
-    public void getQuantasFaltamTest() throws FigurinhaInvalidaException {
+    public void getQuantasFaltamTest() throws ItemInvalidoException {
         popularAlbum(new int[] {1, 2, 3});
         assertEquals(TAMANHO_DO_ALBUM - FIGURINHAS_POR_PACOTE,
-                this.album.getQuantasFaltam());
+                this.album.getQuantosFaltam());
     }
 
     @Test
-    public void getQuantasFaltamTestParaAlbumCompleto() throws FigurinhaInvalidaException {
+    public void getQuantasFaltamTestParaAlbumCompleto() throws ItemInvalidoException {
         for (int i = 1; i <= TAMANHO_DO_ALBUM; i++) {
             comprarPacotinhoUnitario(i);
         }
-        assertEquals(0, this.album.getQuantasFaltam());
+        assertEquals(0, this.album.getQuantosFaltam());
     }
 
 }

@@ -6,7 +6,7 @@ public class Album {
 
     private Figurinha[] figurinhas;
 
-    private int contFigurinhasColadas;
+    private int contItemsColadas;
 
     /**
      * @param nome O nome do álbum
@@ -27,7 +27,7 @@ public class Album {
      *         false, caso contrário
      */
     public boolean possuiFigurinha(int posicao) {
-        return getFigurinha(posicao) != null;
+        return getItem(posicao) != null;
     }
 
     public boolean possuiRepetida(int posicao) {
@@ -41,13 +41,13 @@ public class Album {
      * armazena como repetida, caso contrário.
      *
      * @param pacote Um array de objetos Figurinha
-     * @throws FigurinhaInvalidaException caso uma ou mais
+     * @throws ItemInvalidoException caso uma ou mais
      *         figurinhas do pacote tenham posições inváidas
      *         (nesse caso, todas as figurinhas válidas serão
      *          ainda tratadas normalmente)
      */
     public void abrirPacote(Figurinha[] pacote)
-            throws FigurinhaInvalidaException {
+            throws ItemInvalidoException {
 
         boolean encontrouFigurinhaInvalida = false;
 
@@ -60,14 +60,14 @@ public class Album {
            }
 
            if (this.contadores[posicao] == 0) {
-               this.contFigurinhasColadas++;
+               this.contItemsColadas++;
                this.figurinhas[posicao] = fig;
            }
            this.contadores[posicao]++;
         }
 
         if (encontrouFigurinhaInvalida) {
-            throw new FigurinhaInvalidaException(
+            throw new ItemInvalidoException(
                     "Uma ou mais figurinhas inválidas foram encontradas");
         }
     }
@@ -88,8 +88,8 @@ public class Album {
      *
      * @return o número de figurinhas que estão no álbum
      */
-    public int getContFigurinhas() {
-        return this.contFigurinhasColadas;
+    public int getContItems() {
+        return this.contItemsColadas;
     }
 
     /**
@@ -98,8 +98,8 @@ public class Album {
      *
      * @return A quantidade de figurinhas faltantes.
      */
-    public int getQuantasFaltam() {
-        return this.tamanhoAlbum - getContFigurinhas();
+    public int getQuantosFaltam() {
+        return this.tamanhoAlbum - getContItems();
     }
 
     /**
@@ -109,7 +109,7 @@ public class Album {
      * @return o objeto Figurinha, se existir;
      *         null, caso contrário
      */
-    public Figurinha getFigurinha(int posicao) {
+    public Figurinha getItem(int posicao) {
         if (!isPosicaoValida(posicao)) {
            return null;
         }
