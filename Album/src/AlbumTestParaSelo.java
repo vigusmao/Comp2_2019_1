@@ -31,25 +31,25 @@ public class AlbumTestParaSelo {
     }
 
     @Test
-    public void possuiFigurinhaTestParaSeloExistentes() throws ItemInvalidoException {
+    public void possuiItemTestParaSeloExistentes() throws ItemInvalidoException {
         popularAlbum(new int[] {1, 2, 3});
 
         for (int i = 1; i <= SELOS_POR_PACOTE; i++) {
             assertTrue("Selo já inseridas devem ser encontradas",
-                    this.album.possuiFigurinha(i));
+                    this.album.possuiItem(i));
         }
     }
 
     @Test
-    public void possuiFigurinhaTestParaSeloAusentes() throws ItemInvalidoException {
+    public void possuiItemTestParaSeloAusentes() throws ItemInvalidoException {
         popularAlbum(new int[] {1, 2, 3});
 
         assertFalse("Não devemos encontrar no álbum Selos nunca inseridas",
-                this.album.possuiFigurinha(4));
+                this.album.possuiItem(4));
         assertFalse("Não devemos encontrar Selos de posições não-positivas",
-                this.album.possuiFigurinha(-390));
+                this.album.possuiItem(-390));
         assertFalse("Não devemos encontrar Selos maiores do que o tamanho",
-                this.album.possuiFigurinha(TAMANHO_DO_ALBUM + 1));
+                this.album.possuiItem(TAMANHO_DO_ALBUM + 1));
 
     }
 
@@ -88,11 +88,11 @@ public class AlbumTestParaSelo {
             // ok
         }
 
-        assertTrue(this.album.possuiFigurinha(1));
-        assertTrue(this.album.possuiFigurinha(2));
-        assertTrue(this.album.possuiFigurinha(3));
-        assertTrue(this.album.possuiFigurinha(4));
-        assertFalse(this.album.possuiFigurinha(-400));
+        assertTrue(this.album.possuiItem(1));
+        assertTrue(this.album.possuiItem(2));
+        assertTrue(this.album.possuiItem(3));
+        assertTrue(this.album.possuiItem(4));
+        assertFalse(this.album.possuiItem(-400));
     }
 
     @Test

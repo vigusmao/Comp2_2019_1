@@ -26,12 +26,12 @@ public class Album {
      * @return true, se a figurinha existir;
      *         false, caso contrário
      */
-    public boolean possuiFigurinha(int posicao) {
+    public boolean possuiItem(int posicao) {
         return getItem(posicao) != null;
     }
 
     public boolean possuiRepetida(int posicao) {
-        return possuiFigurinha(posicao) &&
+        return possuiItem(posicao) &&
                 this.contadores[posicao] > 1;
     }
 

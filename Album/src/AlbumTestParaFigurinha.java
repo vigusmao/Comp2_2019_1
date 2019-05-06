@@ -36,7 +36,7 @@ public class AlbumTestParaFigurinha {
 
         for (int i = 1; i <= FIGURINHAS_POR_PACOTE; i++) {
             assertTrue("Figurinhas já inseridas devem ser encontradas",
-                    this.album.possuiFigurinha(i));
+                    this.album.possuiItem(i));
         }
     }
 
@@ -45,11 +45,11 @@ public class AlbumTestParaFigurinha {
         popularAlbum(new int[] {1, 2, 3});
 
         assertFalse("Não devemos encontrar no álbum figurinhas nunca inseridas",
-                this.album.possuiFigurinha(4));
+                this.album.possuiItem(4));
         assertFalse("Não devemos encontrar figurinhas de posições não-positivas",
-                this.album.possuiFigurinha(-390));
+                this.album.possuiItem(-390));
         assertFalse("Não devemos encontrar figurinhas maiores do que o tamanho",
-                this.album.possuiFigurinha(TAMANHO_DO_ALBUM + 1));
+                this.album.possuiItem(TAMANHO_DO_ALBUM + 1));
 
     }
 
@@ -88,11 +88,11 @@ public class AlbumTestParaFigurinha {
             // ok
         }
 
-        assertTrue(this.album.possuiFigurinha(1));
-        assertTrue(this.album.possuiFigurinha(2));
-        assertTrue(this.album.possuiFigurinha(3));
-        assertTrue(this.album.possuiFigurinha(4));
-        assertFalse(this.album.possuiFigurinha(-400));
+        assertTrue(this.album.possuiItem(1));
+        assertTrue(this.album.possuiItem(2));
+        assertTrue(this.album.possuiItem(3));
+        assertTrue(this.album.possuiItem(4));
+        assertFalse(this.album.possuiItem(-400));
     }
 
     @Test
