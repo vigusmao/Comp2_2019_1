@@ -4,9 +4,9 @@ public class Album {
 
     private int[] contadores;
 
-    private Figurinha[] figurinhas;
+    private Colecionavel[] itens;
 
-    private int contItemsColadas;
+    private int contItemsColados;
 
     /**
      * @param nome O nome do álbum
@@ -15,67 +15,67 @@ public class Album {
     public Album(String nome, int tamanhoAlbum) {
         this.tamanhoAlbum = tamanhoAlbum;
         this.contadores = new int[tamanhoAlbum + 1];  // para descartar a posição 0
-        this.figurinhas = new Figurinha[tamanhoAlbum + 1];
+        this.itens = new Colecionavel[tamanhoAlbum + 1];
     }
 
     /**
-     * Responde se determinada figurinha está presente
+     * Responde se determinado item está presente
      * no álbum.
      *
      * @param posicao A posição desejada do álbum
-     * @return true, se a figurinha existir;
+     * @return true, se o item existir;
      *         false, caso contrário
      */
     public boolean possuiItem(int posicao) {
         return getItem(posicao) != null;
     }
 
-    public boolean possuiRepetida(int posicao) {
+    public boolean possuiRepetido(int posicao) {
         return possuiItem(posicao) &&
                 this.contadores[posicao] > 1;
     }
 
     /**
-     * Abre um pacote de figurinhas.
-     * Para cada figurinha, cola no álbum se for inédita;
-     * armazena como repetida, caso contrário.
+     * Abre um pacote de itens.
+     * Para cada item, cola no álbum se for inédito;
+     * armazena como repetido, caso contrário.
      *
-     * @param pacote Um array de objetos Figurinha
-     * @throws ItemInvalidoException caso uma ou mais
-     *         figurinhas do pacote tenham posições inváidas
-     *         (nesse caso, todas as figurinhas válidas serão
-     *          ainda tratadas normalmente)
+     * @param pacote Um array de objetos que implementem Colecionavel
+     * @throws ItemInvalidoException caso um ou mais
+     *         itens do pacote tenham posições inváidas
+     *         (nesse caso, todos as itens válidos serão
+     *          ainda tratados normalmente)
      */
-    public void abrirPacote(Figurinha[] pacote)
+    public void abrirPacote(Colecionavel[] pacote)
             throws ItemInvalidoException {
 
-        boolean encontrouFigurinhaInvalida = false;
+        boolean encontrouItemInvalido = false;
 
-        for (Figurinha fig : pacote) {
-           int posicao = fig.getPosicao();
+        for (Colecionavel colecionavel : pacote) {
+           int posicao = colecionavel.getPosicao();
 
            if (!isPosicaoValida(posicao)) {
-              encontrouFigurinhaInvalida = true;
+              encontrouItemInvalido = true;
               continue;
            }
 
            if (this.contadores[posicao] == 0) {
-               this.contItemsColadas++;
-               this.figurinhas[posicao] = fig;
+               this.contItemsColados++;
+               this.itens[posicao] = colecionavel;
            }
            this.contadores[posicao]++;
         }
 
-        if (encontrouFigurinhaInvalida) {
+        if (encontrouItemInvalido) {
             throw new ItemInvalidoException(
-                    "Uma ou mais figurinhas inválidas foram encontradas");
+                    "Um ou mais itens inválidos foram encontrados");
         }
     }
 
     /**
      * Retorna o tamanho do álbum.
      *
-     * @return a quantidade de figurinhas que compõem o álbum
+     * @return a quantidade de itens que compõem o álbum
      *         completo.
      */
     public int getTamanhoAlbum() {
@@ -83,37 +83,37 @@ public class Album {
     }
 
     /**
-     * Retorna quantas figurinhas estão no momento
+     * Retorna quantos itens estão no momento
      * coladas no álbum.
      *
-     * @return o número de figurinhas que estão no álbum
+     * @return o número de itens que estão no álbum
      */
     public int getContItems() {
-        return this.contItemsColadas;
+        return this.contItemsColados;
     }
 
     /**
-     * Responde qantas figurinhas faltam para se completar
+     * Responde quantos itens faltam para se completar
      * o álbum.
      *
-     * @return A quantidade de figurinhas faltantes.
+     * @return A quantidade de itens faltantes.
      */
     public int getQuantosFaltam() {
         return this.tamanhoAlbum - getContItems();
     }
 
     /**
-     * Retorna a figurinha colada na posição informada.
+     * Retorna o item colado na posição informada.
      *
      * @param posicao a posição desejada
      * @return o objeto Figurinha, se existir;
      *         null, caso contrário
      */
-    public Figurinha getItem(int posicao) {
+    public Colecionavel getItem(int posicao) {
         if (!isPosicaoValida(posicao)) {
            return null;
         }
-        return this.figurinhas[posicao];
+        return this.itens[posicao];
     }
 
     private boolean isPosicaoValida(int posicao) {

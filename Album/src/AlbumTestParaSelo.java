@@ -57,10 +57,10 @@ public class AlbumTestParaSelo {
     public void possuiRepetidaTestParaSeloRepetida() throws ItemInvalidoException {
         popularAlbum(new int[] {1, 2, 3});
 
-        assertFalse(this.album.possuiRepetida(1));  // sanity check
+        assertFalse(this.album.possuiRepetido(1));  // sanity check
 
         comprarPacotinhoUnitario(1);
-        assertTrue(this.album.possuiRepetida(1));
+        assertTrue(this.album.possuiRepetido(1));
     }
 
     @Test
@@ -68,12 +68,12 @@ public class AlbumTestParaSelo {
         popularAlbum(new int[] {1, 2, 3});
         comprarPacotinhoUnitario(2);
 
-        assertFalse(this.album.possuiRepetida(1));
-        assertFalse(this.album.possuiRepetida(3));
+        assertFalse(this.album.possuiRepetido(1));
+        assertFalse(this.album.possuiRepetido(3));
 
-        assertFalse(this.album.possuiRepetida(4));
-        assertFalse(this.album.possuiRepetida(-350));
-        assertFalse(this.album.possuiRepetida(TAMANHO_DO_ALBUM + 1));
+        assertFalse(this.album.possuiRepetido(4));
+        assertFalse(this.album.possuiRepetido(-350));
+        assertFalse(this.album.possuiRepetido(TAMANHO_DO_ALBUM + 1));
 
     }
 
@@ -105,7 +105,7 @@ public class AlbumTestParaSelo {
     public void getSeloTest() throws ItemInvalidoException {
         popularAlbum(new int[] {1, 2, 3});
 
-        Selo f = this.album.getItem(1);
+        Colecionavel f = this.album.getItem(1);
         assertNotNull(f);
         assertEquals(1, f.getPosicao());
 

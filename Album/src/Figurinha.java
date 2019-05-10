@@ -1,4 +1,4 @@
-public class Figurinha {
+public class Figurinha implements Colecionavel {
 
     private final int posicao;
 

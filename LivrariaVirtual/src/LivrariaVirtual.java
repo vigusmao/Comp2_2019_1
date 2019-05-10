@@ -1,4 +1,4 @@
-public abstract class LivrariaVirtual {
+public abstract class LivrariaVirtual implements Enderecavel {
 
     private static final int TAMANHO_MAXIMO_ACERVO = 1000;
     private static final float PRECO_DEFAULT = 10;
@@ -6,6 +6,8 @@ public abstract class LivrariaVirtual {
     private Livro[] acervo;
     private int tamanhoAcervo;
     private float precoPorLivro;
+
+    private Transportador transportador;
 
     public LivrariaVirtual() {
         this(PRECO_DEFAULT);
@@ -15,6 +17,14 @@ public abstract class LivrariaVirtual {
         this.acervo = new Livro[TAMANHO_MAXIMO_ACERVO];
         this.tamanhoAcervo = 0;
         this.precoPorLivro = 10;
+    }
+
+    public void setTransportador(Transportador transportador) {
+        this.transportador = transportador;
+    }
+
+    public String getEndereco() {
+        return "Endereço de livraria virtual";
     }
 
     public void setPrecoPorLivro(float precoPorLivro) {
@@ -29,18 +39,6 @@ public abstract class LivrariaVirtual {
             }
         }
         return false;
-
-        // outro jeito:
-//        for (Livro itemAcervo : this.acervo) {
-//            if (itemAcervo == livroDesejado) {
-//                return true;
-//            }
-//            if (itemAcervo == null) {
-//                break;
-//            }
-//        }
-//        return false;
-
     }
 
     public void incluirLivro(Livro novoLivro) {
@@ -66,7 +64,9 @@ public abstract class LivrariaVirtual {
      *                                     disponível para venda
      * @throws SemTrocoException se não houver troco
      */
-    public void efetuarVenda(Livro livro, int quantidade)
+    public void efetuarVenda(
+            Livro livro, int quantidade,
+            Enderecavel comprador)
             throws LivroNaoEncontradoException, SemTrocoException {
 
         if (!possuiLivro(livro)) {
@@ -78,8 +78,10 @@ public abstract class LivrariaVirtual {
             throw new SemTrocoException(valorDaCompra);
         }
 
-
         String recibo = receberPagamento(valorDaCompra);
+
+        this.transportador.transportar(
+                livro, quantidade, comprador.getEndereco());
 
         System.out.println(String.format(
                 "Valor da compra: %.2f\nLivro: %s\nQuantidade: %d",

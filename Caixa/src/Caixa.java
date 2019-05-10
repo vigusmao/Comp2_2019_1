@@ -1,15 +1,23 @@
-public class Caixa {
+public class Caixa<T extends Joia & Precificavel & Armazenavel> {
+                  // exigências para o "coringa" podem conter
+                  // 0 ou 1 classe e 0 ou mais interfaces
+                  // (se tiver alguma classe, a classe precisa
+                  //  ser a primeira da lista)
 
-    Armazenavel objeto;
+    T objeto;
 
     private float volumeMaximo;
     private float pesoMaximo;
+
+    public Caixa() {
+
+    }
 
     /**
      * Guarda um objeto para posterior recuperação.
      * @param objeto o objeto a ser guardado
      */
-    public void armazenar(Armazenavel objeto) {
+    public void armazenar(T objeto) {
         if (objeto.getPeso() > this.pesoMaximo) {
             throw new IllegalArgumentException(
                     "Objeto muito pesado!");  // RuntimeException
@@ -22,6 +30,13 @@ public class Caixa {
             // ToDo trocar por uma checked exception
         }
 
+        if (objeto.getTipoMaterialPrecioso().equals("ouro")) {
+            throw new IllegalArgumentException(
+                    "Não guardo nada de ouro!");  // RuntimeException
+            // ToDo trocar por uma checked exception
+
+        }
+
         this.objeto = objeto;
     }
 
@@ -30,7 +45,7 @@ public class Caixa {
      * @return o objeto, armazenado, caso exista;
      *         null, caso contrário
      */
-    public Armazenavel recuperar() {
+    public T recuperar() {
         return this.objeto;
     }
 }

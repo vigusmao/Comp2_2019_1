@@ -1,4 +1,4 @@
-public class Selo {
+public class Selo implements Colecionavel {
 
     private float valorNominal;
 

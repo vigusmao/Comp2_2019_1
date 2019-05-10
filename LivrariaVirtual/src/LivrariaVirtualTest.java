@@ -9,20 +9,29 @@ public class LivrariaVirtualTest {
     Livro livroExistente;
     Livro livroNaoExistente;
 
+    Pessoa beltrano;
+    Caminhao scania;
+
     @Before
     public void setUp() {
+        scania = new Caminhao();
+        beltrano = new Pessoa("Beltrano da Silva", 4444);
+
         livraria = new LivrariaVirtualViaBoleto();
+        livraria.setTransportador(beltrano);
 
         livroExistente = new Livro("Blah", "Fulano", 2010);
         livraria.incluirLivro(livroExistente);
 
         livroNaoExistente = new Livro("Foo", "Cicrano", 2011);
+
+
     }
 
     @Test
     public void efetuarVendaTestParaLivroExistente() {
         try {
-            livraria.efetuarVenda(livroExistente, 1);
+            livraria.efetuarVenda(livroExistente, 1, beltrano);
             // ok!!!
 
         } catch (LivroNaoEncontradoException | SemTrocoException e) {
@@ -38,7 +47,7 @@ public class LivrariaVirtualTest {
                     livroExistente.getAutor(),
                     livroExistente.getAnoDePublicacao());
 
-            livraria.efetuarVenda(livro, 1);
+            livraria.efetuarVenda(livro, 1, beltrano);
             // ok!!!
 
         } catch (LivroNaoEncontradoException | SemTrocoException e) {
