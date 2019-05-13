@@ -1,0 +1,44 @@
+1) Modifique a interface Enderecavel para que ela tenha também
+   um método String getNome(). Modifique tb as classes que a
+   implementam, para que elas continuam compilando corretamente.
+
+2) Crie uma classe Recibo, que contenha o valor da venda
+   e o nome do comprador. Esses atributos devem ser final,
+   informados no construtor, e deve haver getters para ambos.
+
+3) Modifique o método LivrariaVirtual.efetuarVenda() para que ele
+   não mais imprima nada na tela; ao invés disso, ele deverá retornar
+   um Recibo referente àquela venda.
+
+4) Modifique a classe Livro acrescentando um atributo
+   preço e getter/setter públicos para esse atributo.
+   Modifique tb a classe LivrariaVirtual de forma que ela
+   leia o preço de cada livro que ela vai vender.
+   Você poderá jogar fora o atributo precoPorLivro que existia
+   em LivrariaVirtual. Modifique os unit tests de acordo.
+
+5) Crie um unit test para verificar que o Recibo retornado pelo
+   método efetuarVenda() está correto.
+
+6) Renomeie LivrariaVirtual para LojaVirtual. Use a ferrameta
+   de Refactor >> Rename da IDE, pois ela poupa tempo e bugs.
+   Muda as ocorrência de "livro" nos comentários e nomes de
+   métodos e variáveis para "item".
+
+7) Crie uma interface Vendavel com os métodos
+   float getPreco() e String getDescricao().
+
+8) Modifique a sua LojaVirtual para que ela possa vender
+   não apenas livros, mas qualquer coisa Vendavel.
+
+9) Modifique LojaVirtual para que ela possa ser especializada
+   em vender apenas UM TIPO de coisa vendável.
+
+10) A classe LivarriaVirtualViaBoleto deve continuar se chamando
+   LivrariaVirtualViaBoleto e deve vender apenas livros.
+
+11) Crie um unit test onde você instanciará uma loja que venda
+    APENAS caminhões, e verificvará que as vendas de caminhões
+    estão funcionando normalmente.
+
+
