@@ -2,19 +2,21 @@ public class Principal {
 
     public static void main(String[] args) {
         Pessoa fulano = new Pessoa("Machado de Assis", 1234);
-        Universidade ufrj = new Universidade("Ilha do Fundao");
+        Universidade ufrj = new Universidade(
+                "UFRJ", "Ilha do Fundao");
 
         Livro livro1 = new Livro("XPTO", fulano.getNome(), 2020);
         Livro livro2 = new Livro("ZZZzzzz", "Cicrano", 2010);
 
+        Caminhao caminhao = new Caminhao("XPTO", 1990);
 
 //        Livro outraReferenciaAoMesmoObjeto = livro1;
 //        Livro outraInstancia = new Livro("XPTO", "Fulano", 2020);
 
-        LivrariaVirtual livraria;
-        livraria = new LivrariaVirtualViaBoleto();
+        LojaVirtual<Caminhao> livraria;
+        livraria = new LojaGenericaViaBoleto<>();
 
-        livraria.incluirLivro(livro1);
+        livraria.incluirItem(caminhao);
 
         int contadorTentativas = 0;
         while (true) {
@@ -22,7 +24,7 @@ public class Principal {
                 if (++contadorTentativas == 3) {
                     break;
                 }
-                livraria.efetuarVenda(livro2, 2, fulano);
+                livraria.efetuarVenda(caminhao, 2, fulano);
                 break;
             } catch (VendaException e) {
                 // avisa ao usuário que a venda não foi efetuada

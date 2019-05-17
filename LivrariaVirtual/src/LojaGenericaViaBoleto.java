@@ -1,7 +1,5 @@
-public class LivrariaVirtualViaBoleto extends LojaVirtual<Livro> {
-
-    // package private (sem modificador de acesso)
-    static final float DEFAULT_PRECO_LIVROS = 10;
+public class LojaGenericaViaBoleto<T extends Vendavel>
+        extends LojaVirtual<T> {
 
     @Override
     protected Recibo receberPagamento(float valor, String nomeComprador) {
