@@ -1,0 +1,17 @@
+0) Verifique que todos os testes estão passando.
+
+1) Crie um método getItem(String descricao) na classe
+   LojaVirtual. Esse método deve retornar o objeto (do tipo correto
+   que está substituindo T naquela loja), caso exista, que contenha
+   a descrição informada; deve retornar null, caso não exista
+   um objeto com aquela descrição. Crie um unit test para esse método,
+   cobrindo os dois casos (aquele em que existe o objeto procurado,
+   e aquele em que não existe).
+
+2) Faça uma pequena "cirurgia" na classe LojaVirtual
+   de forma a usar uma ArrayList<T> para armazenar o seu
+   "acervo" (ou estoque). Faça todas as modificações que sejam
+   necessárias, de forma que os unit tests continuem passando.
+
+
+
