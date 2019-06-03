@@ -1,0 +1,21 @@
+Exercício extra: tente implementar sua própria classe Lista<T>
+usando arrays.
+
+O comportamento dessa classe deve ser o seguinte:
+-- método público adicionar(T item)
+       adiciona o item no final da lista
+
+-- método público getTamanho()
+       retorna a quantidade de itens na lista
+
+-- método getItem(int indice)
+       retorna o item da posição especifica, se houver,
+       lançando uma exceção caso o índice passado seja inválido
+
+       
+Na inicialização da sua lista, você criará um array com certo
+tamanho default. Na hora de adicionar um item, você verificará
+se ainda há espaço no array. Se não houver, você precisará
+criar um novo array, maior do que o anterior, e copiar todos os itens
+para lá, primeiro, antes de adicionar o novo item.
+
