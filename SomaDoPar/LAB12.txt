@@ -1,0 +1,27 @@
+1) Crie uma classe SomaDoPar com o seguinte método público static:
+       String encontrarPar(List<Integer> lista, int s)
+   Esse método deverá retornar uma String com (apenas) um par de elementos da lista
+   cuja soma seja s, se existir; caso contrário, deverá retornar "Não existe".
+   Exemplo:
+       minhaLista --> 2, -10, 5, 32, 35, 51
+       SomaDoPar.encontrarPar(minhaLista, 25) deve printar "-10, 35"
+       SomaDoPar.encontrarPar(minhaLista, 6) deve printar "Não existe"
+
+2) Crie um unit test para o seu método. Por exemplo, testando os dois casos acima!
+
+3) Crie um main() onde você declarará algumas constantes:
+   TAMANHO_LISTA --> o tamanho que sua lista terá
+   MAX_SORTEADO --> o tamanho do maior inteiro a ser sorteado
+   A seguir, você criará uma lista que conterá TAMANHO_LISTA inteiros
+   sorteados aleatória e uniformemente entre 1 e MAX_SORTEADO.
+
+4) Chame o método SomaDoPar.encontrarPar para a sua lista, passando como parâmetro
+   s um número que seja maior do que o dobro do seu MAX_SORTEADO (forçando o
+   pior caso do seu algoritmo).
+
+5) Crie um método público static imprimirLista(Lista<Integer>, String separador)
+   para imprimir na tela a sua lista, com os elementos separados
+   pelo separador fornecido.
+   Exemplo: imprimirLista(minhaLista, "|") deverá imprimir 2|-10|5|32|35|51
+
+6) Imprima a lista criada no seu main().
