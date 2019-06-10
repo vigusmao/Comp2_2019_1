@@ -3,11 +3,11 @@
    Esse método deverá retornar uma String com (apenas) um par de elementos da lista
    cuja soma seja s, se existir; caso contrário, deverá retornar "Não existe".
    Exemplo: minhaLista --> 2, -10, 5, 32, 35, 51
-       SomaDoPar.encontrarPar(minhaLista, 25) deve printar "-10, 35"
-       SomaDoPar.encontrarPar(minhaLista, 102) deve printar "51, 51"
-       SomaDoPar.encontrarPar(minhaLista, 6) deve printar "Não existe"
+       SomaDoPar.encontrarPar(minhaLista, 25) deve retornar "-10, 35"
+       SomaDoPar.encontrarPar(minhaLista, 102) deve retornar "51, 51"
+       SomaDoPar.encontrarPar(minhaLista, 6) deve retornar "Não existe"
 
-2) Crie um unit test para o seu método. Por exemplo, testando os dois casos acima!
+2) Crie um unit test para o seu método (por exemplo, testando os dois casos acima!)
 
 3) Crie um main() onde você declarará algumas constantes:
    TAMANHO_LISTA --> o tamanho que sua lista terá
@@ -21,7 +21,6 @@
 
 5) Crie um método público static imprimirLista(Lista<Integer>, String separador)
    para imprimir na tela a sua lista, com os elementos separados
-   pelo separador fornecido.
+   pelo separador fornecido, e imprima a lista criada no seu main() usando o seu
+   método imprimirLista.
    Exemplo: imprimirLista(minhaLista, "|") deverá imprimir 2|-10|5|32|35|51
-
-6) Imprima a lista criada no seu main().
