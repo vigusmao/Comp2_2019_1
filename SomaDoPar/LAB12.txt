@@ -2,9 +2,9 @@
        String encontrarPar(List<Integer> lista, int s)
    Esse método deverá retornar uma String com (apenas) um par de elementos da lista
    cuja soma seja s, se existir; caso contrário, deverá retornar "Não existe".
-   Exemplo:
-       minhaLista --> 2, -10, 5, 32, 35, 51
+   Exemplo: minhaLista --> 2, -10, 5, 32, 35, 51
        SomaDoPar.encontrarPar(minhaLista, 25) deve printar "-10, 35"
+       SomaDoPar.encontrarPar(minhaLista, 102) deve printar "51, 51"
        SomaDoPar.encontrarPar(minhaLista, 6) deve printar "Não existe"
 
 2) Crie um unit test para o seu método. Por exemplo, testando os dois casos acima!
