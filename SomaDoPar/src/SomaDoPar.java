@@ -28,43 +28,38 @@ public class SomaDoPar {
         return "Não existe";
     }
 
-    public static String formatarLista(
-            List<Integer> lista, String separador) {
-
-        // JEITO TERRÍVEL DE SE FAZER!!!!
+    public static String listaToString(List<Integer> lista, String separador) {
+        // JEITO TERRÍVEL DE SE FAZER!!
 //        String resultado = "";
-//        for (int i = 0; i < lista.size() - 1; i++) {
-//            resultado += lista.get(i);
-//            resultado += separador;
+//        for (int i = 0; i <= lista.size() - 2; i++) {
+//            resultado += lista.get(i) + separador;
 //        }
 //        resultado += lista.get(lista.size() - 1);
 //        return resultado;
 
-        // JEITO CORRETO, usando um StringBuilder
+        // JEITO RECOMENDÁVEL
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < lista.size() - 1; i++) {
-            sb.append(lista.get(i))
-                    .append(separador);
+        for (int i = 0; i <= lista.size() - 2; i++) {
+            sb.append(lista.get(i)).append(separador);
         }
         sb.append(lista.get(lista.size() - 1));
         return sb.toString();
     }
 
-    public static void imprimirLista(
-            List<Integer> lista, String separador) {
-        System.out.println(formatarLista(lista, separador));
+    public static void imprimirLista(List<Integer> lista, String separador) {
+        System.out.println(listaToString(lista, separador));
     }
 
     public static void main(String[] args) {
-        final int TAMANHO = 100_000;
-        List<Integer> lista = new ArrayList<>(TAMANHO);
+        final int TAMANHO = 200_000;
+        List<Integer> minhaLista = new ArrayList<>(TAMANHO);
         for (int i = 1; i <= TAMANHO; i++) {
-            lista.add(i);
+            minhaLista.add(i);
         }
+//        imprimirLista(minhaLista, "|...|");
         long inicio = System.currentTimeMillis();
-        formatarLista(lista, "|");
+        String resultado = listaToString(minhaLista, "..");
         long duracao = System.currentTimeMillis() - inicio;
-        System.out.printf("\nTamanho = %d --- Duração = %d millis\n",
-                TAMANHO, duracao);
+        System.out.println(duracao);
     }
 }
