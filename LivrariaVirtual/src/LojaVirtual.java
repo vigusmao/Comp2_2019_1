@@ -1,10 +1,12 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class LojaVirtual<T extends Vendavel>
         implements Enderecavel {
 
     private static final int TAMANHO_MAXIMO_ACERVO = 1000;
 
-    private Vendavel[] acervo;
-    private int tamanhoAcervo;
+    private List<T> acervo;
     private String nome;
 
     private Transportador transportador;
@@ -15,8 +17,7 @@ public abstract class LojaVirtual<T extends Vendavel>
 
     @SuppressWarnings("unchecked")
     public LojaVirtual(String nome) {
-        this.acervo = new Vendavel[TAMANHO_MAXIMO_ACERVO];
-        this.tamanhoAcervo = 0;
+        this.acervo = new ArrayList<>();
         this.nome = nome;
     }
 
@@ -37,8 +38,7 @@ public abstract class LojaVirtual<T extends Vendavel>
     }
 
     private boolean possuiItem(Vendavel itemDesejado) {
-        for (int i = 0; i < this.tamanhoAcervo; i++) {
-            Vendavel itemAcervo = this.acervo[i];
+        for (T itemAcervo : this.acervo) {
             if (itemAcervo.equals(itemDesejado)) {
                 return true;
             }
@@ -53,11 +53,11 @@ public abstract class LojaVirtual<T extends Vendavel>
         if (possuiItem(novoItem)) {
             return;  // ou lança exceção
         }
-        if (this.tamanhoAcervo == TAMANHO_MAXIMO_ACERVO) {
+        if (this.acervo.size() == TAMANHO_MAXIMO_ACERVO) {
             return;  // ou lança exceção
         }
 
-        this.acervo[this.tamanhoAcervo++] = novoItem;
+        this.acervo.add(novoItem);
     }
 
     /**
@@ -78,7 +78,7 @@ public abstract class LojaVirtual<T extends Vendavel>
         if (!possuiItem(item)) {
             throw new ItemNaoEncontradoException(item);
         }
-        float valorDaCompra = item.getPreco() * quantidade;
+        float valorDaCompra = item.getPrecoSugerido() * quantidade;
 
         if (((int) valorDaCompra) != valorDaCompra) {
             throw new SemTrocoException(valorDaCompra);
@@ -105,5 +105,14 @@ public abstract class LojaVirtual<T extends Vendavel>
 
     private void foo() {
         System.out.println("foo");
+    }
+
+    public T getItem(String descricao) {
+        for (T item : this.acervo) {
+            if (item.getDescricao().equals(descricao)) {
+                return item;
+            }
+        }
+        return null;
     }
 }

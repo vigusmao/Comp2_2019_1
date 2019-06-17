@@ -22,7 +22,7 @@ public class LojaVirtualTest {
         loja.setTransportador(beltrano);
 
         livroExistente = new Livro("Blah", "Fulano", 2010);
-        livroExistente.setPreco(23);
+        livroExistente.setPrecoSugerido(23);
         loja.incluirItem(livroExistente);
 
         loja.incluirItem(meuCaminhao);  // :-)
@@ -83,4 +83,47 @@ public class LojaVirtualTest {
         // pass
     }
 
+    @Test
+    public void testeGetItemParaItemExistente() {
+        assertEquals("Devemos retornar um item dada a sua descrição",
+                livroExistente,
+                loja.getItem(livroExistente.getDescricao()));
+    }
+
+    @Test
+    public void testeGetItemParaItemNaoExistente() {
+        assertNull("Devemos retornar null para itens não-existentes",
+                loja.getItem("sfkjhsdkjhdsjhdsf"));
+    }
+
+    @Test
+    public void testItemVendidoPorLojasDiferentesComPrecosDiferentes()
+            throws SemTrocoException, ItemNaoEncontradoException {
+
+        LojaVirtual<Livro> loja1 = new LivrariaVirtualViaBoleto();
+        LojaVirtual<Livro> loja2 = new LivrariaVirtualViaBoleto();
+
+        Livro livro = new Livro("O Retrato deDorian Gray",
+                "Oscar Wilde", 1910);
+        livro.setPrecoSugerido(25);
+
+        loja1.incluirItem(livro);
+        loja1.setPreco(livro, 20);  // sobrescrevendo o preço
+
+        loja2.incluirItem(livro);  // ficará com o preço sugerido
+
+        Pessoa comprador = new Pessoa("Fulano", 12345);
+
+        Recibo reciboRecebido, reciboEsperado;
+
+        // primeira compra: loja 1
+        reciboRecebido = loja.efetuarVenda(livro, 1, comprador);
+        reciboEsperado = new Recibo(20, comprador.getNome());
+        assertEquals(reciboEsperado, reciboRecebido);
+
+        // segunda compra: loja 2
+        reciboRecebido = loja.efetuarVenda(livro, 1, comprador);
+        reciboEsperado = new Recibo(25, comprador.getNome());
+        assertEquals(reciboEsperado, reciboRecebido);
+    }
 }

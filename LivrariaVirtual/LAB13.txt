@@ -1,0 +1,11 @@
+1) Renomeie o método getPreco() da interface para getPrecoSugerido().
+   Aproveite para renomear também os setters dos atributos correspondentes.
+   Exemplo: em Livro, hoje temos getPreco() e setPreco(); queremos
+   mudar para getPrecoSugerido() e setPrecoSugerido().
+
+2) Acrescente um método setPreco(Vendavel item, float precoEmReais)
+   à classe LojaVirtual. Se o preço de um item não for explicitamente
+   setado por uma loja, ela deverá vendê-lo pelo seu preço sugerido.
+
+3) Faça passar o último teste em LojaVirtualTest.
+

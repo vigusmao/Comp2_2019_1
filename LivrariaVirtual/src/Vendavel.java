@@ -1,6 +1,6 @@
 public interface Vendavel {
 
-    float getPreco();
+    float getPrecoSugerido();
 
     String getDescricao();
 }

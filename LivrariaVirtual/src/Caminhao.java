@@ -16,7 +16,7 @@ public class Caminhao implements Transportador, Vendavel {
     }
 
     @Override
-    public float getPreco() {
+    public float getPrecoSugerido() {
         // mock (na prática, haveria um atributo)
         return 100_000;
     }

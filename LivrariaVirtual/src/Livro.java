@@ -5,13 +5,13 @@ public class Livro implements Vendavel {
     private final String titulo;
     private final String autor;
     private final int anoDePublicacao;
-    private float preco;
+    private float precoSugerido;
 
     public Livro(String titulo, String autor, int anoDePublicacao) {
         this.titulo = titulo;
         this.autor = autor;
         this.anoDePublicacao = anoDePublicacao;
-        this.preco = LivrariaVirtualViaBoleto.DEFAULT_PRECO_LIVROS;
+        this.precoSugerido = LivrariaVirtualViaBoleto.DEFAULT_PRECO_LIVROS;
     }
 
     public String getTitulo() {
@@ -26,12 +26,12 @@ public class Livro implements Vendavel {
         return anoDePublicacao;
     }
 
-    public float getPreco() {
-        return preco;
+    public float getPrecoSugerido() {
+        return precoSugerido;
     }
 
-    public void setPreco(float preco) {
-        this.preco = preco;
+    public void setPrecoSugerido(float precoSugerido) {
+        this.precoSugerido = precoSugerido;
     }
 
     @Override
