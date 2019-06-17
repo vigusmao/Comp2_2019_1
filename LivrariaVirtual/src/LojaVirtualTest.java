@@ -103,8 +103,8 @@ public class LojaVirtualTest {
         LojaVirtual<Livro> loja1 = new LivrariaVirtualViaBoleto();
         LojaVirtual<Livro> loja2 = new LivrariaVirtualViaBoleto();
 
-        Livro livro = new Livro("O Retrato deDorian Gray",
-                "Oscar Wilde", 1910);
+        Livro livro = new Livro("O Retrato de Dorian Gray",
+                "Oscar Wilde", 1890);
         livro.setPrecoSugerido(25);
 
         loja1.incluirItem(livro);
@@ -117,12 +117,12 @@ public class LojaVirtualTest {
         Recibo reciboRecebido, reciboEsperado;
 
         // primeira compra: loja 1
-        reciboRecebido = loja.efetuarVenda(livro, 1, comprador);
+        reciboRecebido = loja1.efetuarVenda(livro, 1, comprador);
         reciboEsperado = new Recibo(20, comprador.getNome());
         assertEquals(reciboEsperado, reciboRecebido);
 
         // segunda compra: loja 2
-        reciboRecebido = loja.efetuarVenda(livro, 1, comprador);
+        reciboRecebido = loja2.efetuarVenda(livro, 1, comprador);
         reciboEsperado = new Recibo(25, comprador.getNome());
         assertEquals(reciboEsperado, reciboRecebido);
     }

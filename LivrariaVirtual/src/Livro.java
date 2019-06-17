@@ -51,6 +51,7 @@ public class Livro implements Vendavel {
 
     @Override
     public int hashCode() {
+
         return Objects.hash(titulo, autor);
     }
 }
