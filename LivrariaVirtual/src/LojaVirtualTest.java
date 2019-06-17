@@ -103,6 +103,9 @@ public class LojaVirtualTest {
         LojaVirtual<Livro> loja1 = new LivrariaVirtualViaBoleto();
         LojaVirtual<Livro> loja2 = new LivrariaVirtualViaBoleto();
 
+        loja1.setTransportador(meuCaminhao);
+        loja2.setTransportador(meuCaminhao);
+
         Livro livro = new Livro("O Retrato de Dorian Gray",
                 "Oscar Wilde", 1890);
         livro.setPrecoSugerido(25);
