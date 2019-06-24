@@ -11,18 +11,24 @@ public enum Dinheiro {
     NOTA_DE_CEM_REAIS(100);
 
     float valorNumerico;
-//    static Map<Float, Dinheiro> dinheiroByValor = new HashMap<>();
+    static Map<Float, Dinheiro> dinheiroByValorNumerico = new HashMap<>();
+    static {
+        for (Dinheiro d : Dinheiro.values()) {
+            dinheiroByValorNumerico.put(d.valorNumerico, d);
+        }
+    }
 
     Dinheiro(float valor) {
         this.valorNumerico = valor;
     }
 
     public static Dinheiro getDinheiroByValor(float valorNumerico) {
-        for (Dinheiro dinheiro : Dinheiro.values()) {
-            if (dinheiro.valorNumerico == valorNumerico) {
-                return dinheiro;
-            }
-        }
-        return null;
+//        for (Dinheiro dinheiro : Dinheiro.values()) {
+//            if (dinheiro.valorNumerico == valorNumerico) {
+//                return dinheiro;
+//            }
+//        }
+//        return null;
+        return dinheiroByValorNumerico.get(valorNumerico);
     }
 }

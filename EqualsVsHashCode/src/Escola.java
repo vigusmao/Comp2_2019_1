@@ -5,7 +5,12 @@ public class Escola {
     Set<Aluno> alunos;
     Map<Aluno, Aluno> representantePorAluno;
 
+    static {
+        System.out.println("Estou inicializando a classe Escola...");
+    }
+
     public Escola() {
+        System.out.println("Estou instanciando uma escola...");
         this.alunos = new HashSet<>();
         this.representantePorAluno = new HashMap<>();
     }

@@ -4,11 +4,16 @@ public class Principal {
 
     public static void main(String[] args) {
 
+        System.out.println(Dinheiro.MOEDA_DE_CINCO_CENTAVOS.valorNumerico);
+        System.out.println(Dinheiro.NOTA_DE_DOIS_REAIS.valorNumerico);
+
         System.out.println(Dinheiro.getDinheiroByValor(3));
 
         System.out.println(TipoAluno.ENSINO_MEDIO);
 
         Escola escola = new Escola();
+        Escola escola2 = new Escola();
+        Escola escola3 = new Escola();
         Random random = new Random();
 
         int contEncontrados = 0;
