@@ -1,10 +1,20 @@
 public class Conta {
 
+    private final int numero;
+    private Correntista correntista;
+    private TipoConta tipo;
+
+    public Conta(int numero, Correntista correntista, TipoConta tipo) {
+        this.numero = numero;
+        this.correntista = correntista;
+        this.tipo = tipo;
+    }
+
     public int getNumeroDaConta() {
-        return 0;  // ToDo IMPLEMENT ME!!!!!!
+        return this.numero;
     }
 
     public TipoConta getTipo() {
-        return null;  // ToDo IMPLEMENT ME!!!!
+        return this.tipo;
     }
 }
