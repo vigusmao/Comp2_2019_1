@@ -1,0 +1,28 @@
+1) Crie uma classe Banco
+
+2) Crie uma classe Conta, com os campos
+   Correntista correntista; int numeroDaConta; TipoDeConta tipo
+   (PS.: O tipo de conta pode ser CONTA_CORRENTE, CONTA_POUPANCA, CONTA_SALARIO.)
+
+3) Crie uma interface Correntista, com os métodos
+    -- long getId()
+    -- String getEndereco()
+
+4) Crie duas classes, PessoaFisica e PessoaJuridica, ambas implementando
+   a interface Correntista. PessoaFisica deve ter um final long cpf, que
+   será seu id; PessoaJuridica deve ter um final long cnpj, que será seu id.
+
+5) Na classe Banco, implemente um método públic criarConta,
+   que retorna a ContaCorrente criada. Os parâmetros desse método devem ser
+   o Correntista (dono da conta), que pode ser uma PF ou uma PJ, e o tipo de
+   conta. O número da conta deve ser dado automaticamente pelo banco, usando
+   um inteiro incremental a partir de 1001 (inclusive).
+
+6) Na classe Banco, crie um método sortearContaPoupanca() que retorna uma
+   Conta do tipo CONTA_POUPANCA, escolhida aleatória e uniformemente dentre todas
+   as contas de poupança daquele banco.
+
+7) A classe Banco deve ter um método público para excluir uma conta (recebendo
+   seu número como parâmetro), e um método público para retornar uma conta
+   a partir do numeroDaConta informado.
+
